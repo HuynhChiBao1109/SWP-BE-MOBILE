@@ -4,24 +4,23 @@ const worksheetController = require('../controllers/worksheets.Controller');
 const authMiddleware = require('../middlewares/auth.Middleware');
 
 const createWorksheet = authMiddleware.authentification('create', 'worksheet');
-const readWorksheet = authMiddleware.authentification('read', 'worksheet');
 const updateWorksheet = authMiddleware.authentification('update', 'worksheet');
 const deleteWorksheet = authMiddleware.authentification('delete', 'worksheet');
-const readDetailWorksheet = authMiddleware.authentification('readDetail', 'worksheet');
+
 
 
 router
     .route('/')
     .post(createWorksheet, worksheetController.createWorksheet)
-    .get(readWorksheet, worksheetController.getWorkSheetOfWeek)
+    .get(worksheetController.getWorkSheetOfWeek)
 
 router
     .route('/employee')
-    .get(readDetailWorksheet, worksheetController.getWorksheetEmployeeDetail)
+    .get(worksheetController.getWorksheetEmployeeDetail)
 
 router
     .route('/:id')
-    .get(readDetailWorksheet, worksheetController.getWorksheetDetail)
+    .get(worksheetController.getWorksheetDetail)
     .put(updateWorksheet, worksheetController.updateWorksheet)
     .delete(deleteWorksheet, worksheetController.deleteWorksheet)
 

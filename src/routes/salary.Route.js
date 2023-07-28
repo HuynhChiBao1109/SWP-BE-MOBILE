@@ -9,10 +9,10 @@ router
 
 router
     .route('/paySlipDetails/:employee_id')
-    .get(authMiddleware.authentification('readPaySlip', 'salary'), salaryController.getPaySlipDetails)
+    .get(salaryController.getPaySlipDetails)
 router
     .route('/paySlip/:employee_id')
-    .get(authMiddleware.authentification('readPaySlip', 'salary'), salaryController.getPaySlip)
+    .get(salaryController.getPaySlip)
 
 /**
  * @swagger

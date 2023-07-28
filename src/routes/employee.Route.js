@@ -8,7 +8,6 @@ const readEmployee = authMiddleware.authentification('read', 'employee')
 const createEmployee = authMiddleware.authentification('create', 'employee')
 const updateEmployee = authMiddleware.authentification('update', 'employee')
 const deleteEmployee = authMiddleware.authentification('delete', 'employee')
-const readDetailEmployee = authMiddleware.authentification('readDetail', 'employee')
 
 router
     .route('/')
@@ -28,7 +27,7 @@ router
 router
     .route('/:id')
     // get employee details
-    .get(readDetailEmployee, employeesController.getEmployeeDetail)
+    .get(employeesController.getEmployeeDetail)
     // update employee details
     .put(updateEmployee, employeesController.updateEmployeeDetail)
     // delete employee details

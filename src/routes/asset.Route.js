@@ -6,20 +6,17 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 const authMiddleware = require('../middlewares/auth.Middleware')
 
-const readAsset = authMiddleware.authentification('read', 'asset')
-const createAsset = authMiddleware.authentification('create', 'asset')
 
 router
     .route('/product/images/')
     .post(
-        createAsset,
         upload.single('file'),
         assetsController.uploadProductImage
     )
 
 router
     .route('/product/images/:id')
-    .get(readAsset, assetsController.getProductImage)
+    .get(assetsController.getProductImage)
 router
     .route('/salary/pdf/:employee_id/:month_year')
     .get(assetsController.getSalaryPdf)

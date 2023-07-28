@@ -3,16 +3,13 @@ const router = express.Router()
 const checkInOutController = require('../controllers/checkInOuts.Controller')
 const authMiddleware = require('../middlewares/auth.Middleware')
 
-const updateCheckInOut = authMiddleware.authentification('update', 'checkInOut');
-
-
 router
     .route('/checkin')
-    .put(updateCheckInOut, checkInOutController.updateCheckIn);
+    .put(checkInOutController.updateCheckIn);
 
 router
     .route('/checkout')
-    .put(updateCheckInOut, checkInOutController.updateCheckOut);
+    .put(checkInOutController.updateCheckOut);
 
 /**
  * @swagger
